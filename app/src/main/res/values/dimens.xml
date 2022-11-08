@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_1">35sp</dimen>
+    <dimen name="title_2">25sp</dimen>
+    <dimen name="title_3">24sp</dimen>
+    <dimen name="title_4">20sp</dimen>
+    <dimen name="title_5">18sp</dimen>
+    <dimen name="title_6">16sp</dimen>
+
+    <dimen name="content_1">20sp</dimen>
+    <dimen name="content_2">18sp</dimen>
+    <dimen name="content_3">16sp</dimen>
+    <dimen name="content_4">15sp</dimen>
+    <dimen name="content_5">12sp</dimen>
+</resources>
