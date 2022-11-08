@@ -37,4 +37,6 @@
     <string name="cart_title">My Cart</string>
     <string name="cart_add_address">Add address</string>
     <string name="checkout_btn_text">Checkout</string>
+    <!--<string name="search_hint_text"><font size="12sp">Search</font></string>-->
+    <string name="search_hint_text">Search</string>
 </resources>
