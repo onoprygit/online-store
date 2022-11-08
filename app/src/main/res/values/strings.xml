@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">online-store-test-task</string>
+
+    <!--BOTTOM NAV BAR-->
+    <string name="home_btn">Explorer</string>
+    <string name="cart_btn">Cart</string>
+    <string name="favorites_btn">Favorites</string>
+    <string name="profile_btn">Profile</string>
+
+
+    <!--SPLASH-->
+    <string name="splash_screen_title">Ecommerce Concept</string>
+
+    <!--HOME-->
+    <string name="categories_title">Select Category</string>
+    <string name="categories_more">view all</string>
+    <string name="sales_title">Hot sales</string>
+    <string name="sales_more">see more</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="search_text">search</string>
+
+    <string name="filter_title">Filter options</string>
+    <string name="filter_apply_btn_text">Done</string>
+    <string name="filter_brand_title">Brand</string>
+    <string name="filter_price_title">Price</string>
+    <string name="filter_size_title">Size</string>
+
+    <!--DETAILS-->
+    <string name="details_title">Product Details</string>
+    <string name="details_tab_content_shop">Shop</string>
+    <string name="details_tab_content_details">Details</string>
+    <string name="details_tab_content_features">Features</string>
+    <string name="choose_color_title">Select color and capacity</string>
+    <string name="add_to_cart">Add to Cart</string>
+
+    <!--CART-->
+    <string name="cart_title">My Cart</string>
+    <string name="cart_add_address">Add address</string>
+    <string name="checkout_btn_text">Checkout</string>
 </resources>
