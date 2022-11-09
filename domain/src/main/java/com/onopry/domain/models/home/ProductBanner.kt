@@ -1,9 +1,9 @@
 package com.onopry.domain.models.home
 
-data class HomeStore(
+data class ProductBanner(
     val id: Int,
-    val is_buy: Boolean,
-    val is_new: Boolean,
+    val isBuy: Boolean,
+    val isNew: Boolean,
     val picture: String,
     val subtitle: String,
     val title: String

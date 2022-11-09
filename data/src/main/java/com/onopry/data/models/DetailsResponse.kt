@@ -1,7 +1,9 @@
 package com.onopry.data.models
 
 import com.onopry.domain.models.details.ItemDetails
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class DetailsResponse(
     val CPU: String,
     val camera: String,
