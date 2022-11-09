@@ -1,6 +1,6 @@
 package com.onopry.domain.models.details
 
-data class ItemDetails(
+data class ProductDetails(
     val CPU: String,
     val camera: String,
     val capacity: List<String>,
@@ -8,7 +8,7 @@ data class ItemDetails(
     val id: String,
     val images: List<String>,
     val isFavorites: Boolean,
-    val price: Int,
+    val price: String,
     val rating: Double,
     val sd: String,
     val ssd: String,

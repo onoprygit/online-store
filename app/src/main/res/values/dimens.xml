@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--TEXT SIZES-->
     <dimen name="title_1">35sp</dimen>
     <dimen name="title_2">25sp</dimen>
     <dimen name="title_3">24sp</dimen>
     <dimen name="title_4">20sp</dimen>
     <dimen name="title_5">18sp</dimen>
     <dimen name="title_6">16sp</dimen>
+    <dimen name="title_7">11sp</dimen>
 
     <dimen name="content_1">20sp</dimen>
     <dimen name="content_2">18sp</dimen>
@@ -13,4 +16,16 @@
     <dimen name="content_4">15sp</dimen>
     <dimen name="content_5">12sp</dimen>
     <dimen name="content_6">10sp</dimen>
+
+    <!--Home screen-->
+    <dimen name="banner_width">378dp</dimen>
+    <dimen name="banner_height">182dp</dimen>
+
+    <dimen name="banner_new_width">27dp</dimen>
+    <dimen name="banner_new_height">27dp</dimen>
+
+    <dimen name="banner_action_button_width">98dp</dimen>
+    <dimen name="banner_action_button_height">23dp</dimen>
+
+
 </resources>

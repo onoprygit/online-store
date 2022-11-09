@@ -1,5 +1,6 @@
 package com.onopry.data.utils
 
+import android.util.Log
 import com.onopry.domain.utils.ApiError
 import com.onopry.domain.utils.ApiException
 import com.onopry.domain.utils.ApiResult
@@ -23,3 +24,5 @@ suspend fun <T : Any> safeApiCall(
         ApiException(e)
     }
 }
+
+fun Any.debugLog(msg: String){ Log.d("TAG"+this.javaClass.simpleName, msg) }

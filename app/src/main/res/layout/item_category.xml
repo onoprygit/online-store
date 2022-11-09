@@ -19,7 +19,7 @@
         app:contentPaddingBottom="20dp"
         app:contentPaddingStart="26dp"
         app:contentPaddingEnd="26dp"
-        android:background="@drawable/background_category_image"
+        android:background="@drawable/background_oval_shape"
         />
 
     <TextView

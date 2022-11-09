@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.databinding.FragmentHomeBinding
+import com.onopry.online_store_test_task.screens.adapters.BannersAdapter
 import com.onopry.online_store_test_task.screens.adapters.CategoryAdapter
 import com.onopry.online_store_test_task.screens.adapters.ProductsAdapter
 import com.onopry.online_store_test_task.utils.shortToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -30,7 +29,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentHomeBinding.bind(view)
-
+        //
         val categoryAdapter = CategoryAdapter { categoryId ->
             shortToast(categoryId.toString())
         }
@@ -39,24 +38,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.categoriesRecycler.adapter = categoryAdapter
 
-        val productsAdapter = ProductsAdapter { productId ->
-            shortToast(productId.toString())
-        }
+        //
+        val bannerAdapter = BannersAdapter { bannerId -> shortToast("Banner id = $bannerId") }
+        binding.bannerRecycler.adapter = bannerAdapter
+        binding.bannerRecycler.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        //
+        val productsAdapter = ProductsAdapter { productId -> shortToast("Product id = $productId") }
+
+        binding.productsRecycler.adapter = productsAdapter
+        binding.productsRecycler.layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    with(viewModel.uiState.value){
+                    with(viewModel.uiState.value) {
                         if (isLoading) Log.d("TAG_" + this.javaClass.simpleName, "Data is loading!")
                         productsAdapter.setProductsList(this.products)
+                        bannerAdapter.setBannerList(this.banners)
                         if (errorMessage.isNotEmpty()) shortToast(errorMessage)
                     }
                 }
             }
         }
-
-        binding.productsRecycler.layoutManager =
-            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-        binding.productsRecycler.adapter = productsAdapter
     }
 }

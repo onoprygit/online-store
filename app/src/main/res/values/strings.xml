@@ -25,6 +25,8 @@
     <string name="filter_price_title">Price</string>
     <string name="filter_size_title">Size</string>
 
+    <string name="banner_action_button_text">Buy now!</string>
+
     <!--DETAILS-->
     <string name="details_title">Product Details</string>
     <string name="details_tab_content_shop">Shop</string>
@@ -39,4 +41,5 @@
     <string name="checkout_btn_text">Checkout</string>
     <!--<string name="search_hint_text"><font size="12sp">Search</font></string>-->
     <string name="search_hint_text">Search</string>
+    <string name="banner_new_flag_text">New</string>
 </resources>
