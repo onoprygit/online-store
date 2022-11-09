@@ -13,7 +13,9 @@ class StoreRepositoryImpl(
     private val localDataSource: LocalDataSource
 ) : StoreRepository {
     override suspend fun getBannersAndProducts() =
-        when (val response = remoteDataSource.getBannersAndProducts()) {
+        when (
+            val response = remoteDataSource.getBannersAndProducts()
+        ) {
             is ApiSuccess -> ApiSuccess<BannerAndProduct>(data = response.data.toDomain())
             is ApiError -> ApiError<BannerAndProduct>(
                 code = response.code,

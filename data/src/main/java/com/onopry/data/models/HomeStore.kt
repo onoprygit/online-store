@@ -11,7 +11,7 @@ data class HomeStore(
     @Json(name = "is_buy")
     val isBuy: Boolean,
     @Json(name = "is_new")
-    val isNew: Boolean,
+    val isNew: Boolean?,
     @Json(name = "picture")
     val picture: String,
     @Json(name = "subtitle")
@@ -19,5 +19,12 @@ data class HomeStore(
     @Json(name = "title")
     val title: String
 ) {
-    fun toDomain() = ProductBanner(id, isBuy, isNew, picture, subtitle, title)
+    fun toDomain() = ProductBanner(
+        id =  id,
+        isBuy = isBuy,
+        isNew = isNew ?: false,
+        picture =  picture,
+        subtitle =  subtitle,
+        title = title
+    )
 }

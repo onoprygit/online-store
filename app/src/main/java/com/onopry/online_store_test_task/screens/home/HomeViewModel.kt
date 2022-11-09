@@ -9,9 +9,9 @@ import com.onopry.domain.utils.ApiException
 import com.onopry.domain.utils.ApiSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -24,31 +24,26 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
 
+    init {
+        fetchHome()
+    }
+
     fun fetchHome() {
         viewModelScope.launch {
-            val response = withContext(Dispatchers.IO) { getBannersAndProductsUseCase() }
-            when (response) {
+            when (val response = withContext(Dispatchers.IO) { getBannersAndProductsUseCase() }) {
                 is ApiSuccess -> {
-                    _uiState.emit(
-                        HomeUiState(
-                            banners = response.data.banners,
-                            products = response.data.products
-                        )
+                    _uiState.value = HomeUiState(
+                        banners = response.data.banners,
+                        products = response.data.products
                     )
                 }
                 is ApiError -> {
-                    _uiState.emit(
-                        HomeUiState(
-                            errorMessage = response.message ?: "Unknown Error"
-                        )
-                    )
+                    _uiState.value =
+                        HomeUiState(errorMessage = response.message ?: "Unknown Error")
                 }
                 is ApiException -> {
-                    _uiState.emit(
-                        HomeUiState(
-                            errorMessage = response.exception.message ?: "Unknown Error"
-                        )
-                    )
+                    _uiState.value =
+                        HomeUiState(errorMessage = response.exception.message ?: "Unknown Error")
                 }
             }
 
