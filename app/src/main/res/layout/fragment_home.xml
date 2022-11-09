@@ -157,7 +157,18 @@
                 android:text="@string/sales_more"
                 />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/bannersPager"
+                android:layout_width="0dp"
+                android:layout_height="182dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/salesTitle"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="21dp"
+                />
+
+<!--            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bannerRecycler"
                 android:layout_width="0dp"
                 android:layout_height="182dp"
@@ -168,7 +179,8 @@
                 app:layout_constraintTop_toBottomOf="@id/salesTitle"
                 android:orientation="horizontal"
                 tools:listitem="@layout/item_banner"
-                />
+                android:visibility="gone"
+                />-->
 
 
             <!--<com.google.android.material.imageview.ShapeableImageView
@@ -189,7 +201,7 @@
                 android:id="@+id/bestSellerTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/bannerRecycler"
+                app:layout_constraintTop_toBottomOf="@id/bannersPager"
                 app:layout_constraintStart_toStartOf="parent"
                 style="@style/HomeTitleTextView"
                 android:text="@string/best_seller"

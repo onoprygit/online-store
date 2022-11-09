@@ -40,9 +40,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         //
         val bannerAdapter = BannersAdapter { bannerId -> shortToast("Banner id = $bannerId") }
-        binding.bannerRecycler.adapter = bannerAdapter
-        binding.bannerRecycler.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        binding.bannerRecycler.adapter = bannerAdapter
+//        binding.bannerRecycler.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.bannersPager.adapter = bannerAdapter
 
         //
         val productsAdapter = ProductsAdapter { productId -> shortToast("Product id = $productId") }
