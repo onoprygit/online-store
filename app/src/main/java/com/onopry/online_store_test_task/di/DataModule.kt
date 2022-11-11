@@ -5,7 +5,7 @@ import com.onopry.data.datasource.local.LocalDataSource
 import com.onopry.data.datasource.local.LocalDataSourceImpl
 import com.onopry.data.datasource.remote.RemoteDataSource
 import com.onopry.data.datasource.remote.RemoteDataSourceImpl
-import com.onopry.data.datasource.remote.StoreApi
+import com.onopry.data.network.StoreApi
 import com.onopry.data.repository.StoreRepositoryImpl
 import com.onopry.domain.repository.StoreRepository
 import dagger.Module
@@ -31,6 +31,6 @@ object DataModule {
     fun provideStoreRepository(
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSource
-    ): StoreRepository = StoreRepositoryImpl(remoteDataSource = remoteDataSource, localDataSource = localDataSource)
-
+    ): StoreRepository =
+        StoreRepositoryImpl(remoteDataSource = remoteDataSource, localDataSource = localDataSource)
 }

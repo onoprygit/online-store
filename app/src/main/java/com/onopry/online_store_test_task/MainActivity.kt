@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.onopry.online_store_test_task.databinding.ActivityMainBinding
-import com.onopry.online_store_test_task.screens.home.HomeFragment
 import com.onopry.online_store_test_task.utils.gone
-import com.onopry.online_store_test_task.utils.hide
 import com.onopry.online_store_test_task.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 

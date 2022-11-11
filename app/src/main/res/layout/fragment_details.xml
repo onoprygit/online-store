@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_gray"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.details.DetailsFragment">
+    tools:context=".presentation.details.DetailsFragment">
 
     <include
         android:id="@+id/toolbar"
@@ -91,21 +91,18 @@
             >
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabShop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/details_tab_content_shop"
                 />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/details_tab_content_details"
                 />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabFeatures"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/details_tab_content_features"

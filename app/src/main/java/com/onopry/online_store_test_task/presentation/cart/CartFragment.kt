@@ -1,11 +1,8 @@
-package com.onopry.online_store_test_task.screens.cart
+package com.onopry.online_store_test_task.presentation.cart
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.onopry.online_store_test_task.R
 import dagger.hilt.android.AndroidEntryPoint

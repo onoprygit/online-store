@@ -1,4 +1,4 @@
-package com.onopry.online_store_test_task.screens.home
+package com.onopry.online_store_test_task.presentation.home
 
 import android.os.Bundle
 import android.view.View
@@ -7,17 +7,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.onopry.domain.models.home.BannerAndProduct
 import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.adapters.BannersAdapter
 import com.onopry.online_store_test_task.adapters.CategoryAdapter
 import com.onopry.online_store_test_task.adapters.ProductsAdapter
 import com.onopry.online_store_test_task.databinding.FragmentHomeBinding
-import com.onopry.online_store_test_task.screens.details.DetailsFragmentDirections
+import com.onopry.online_store_test_task.presentation.base.BaseUiState
 import com.onopry.online_store_test_task.utils.gone
 import com.onopry.online_store_test_task.utils.hide
 import com.onopry.online_store_test_task.utils.shortToast
@@ -52,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun refreshData() {
-        viewModel.refresh()
+        viewModel.refreshData()
     }
 
     private fun setupListeners() {
@@ -120,8 +120,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 viewModel.uiState.collect {
                     with(viewModel.uiState.value) {
                         showLoadingOrError(this)
-                        productsAdapter.setProductsList(this.products)
-                        bannerAdapter.setBannerList(this.banners)
+                        productsAdapter.setProductsList(this.data?.products ?: emptyList())
+                        bannerAdapter.setBannerList(this.data?.banners ?: emptyList())
                     }
                 }
             }
@@ -134,7 +134,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     // todo improve method
-    private fun showLoadingOrError(uiState: HomeUiState) {
+    private fun showLoadingOrError(uiState: BaseUiState<BannerAndProduct>) {
         with(binding) {
             productsRecycler.hide()
             bannersPager.hide()

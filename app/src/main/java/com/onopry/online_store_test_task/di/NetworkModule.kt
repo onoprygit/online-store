@@ -1,6 +1,6 @@
 package com.onopry.online_store_test_task.di
 
-import com.onopry.data.datasource.remote.StoreApi
+import com.onopry.data.network.StoreApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -10,7 +10,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -19,7 +18,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpInterceptor() = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideOkHttpInterceptor() =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     @Provides
     @Singleton
