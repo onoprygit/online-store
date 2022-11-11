@@ -7,14 +7,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.onopry.online_store_test_task.R
+import com.onopry.online_store_test_task.adapters.BannersAdapter
+import com.onopry.online_store_test_task.adapters.CategoryAdapter
+import com.onopry.online_store_test_task.adapters.ProductsAdapter
 import com.onopry.online_store_test_task.databinding.FragmentHomeBinding
-import com.onopry.online_store_test_task.screens.adapters.BannersAdapter
-import com.onopry.online_store_test_task.screens.adapters.CategoryAdapter
-import com.onopry.online_store_test_task.screens.adapters.ProductsAdapter
+import com.onopry.online_store_test_task.screens.details.DetailsFragmentDirections
 import com.onopry.online_store_test_task.utils.gone
 import com.onopry.online_store_test_task.utils.hide
 import com.onopry.online_store_test_task.utils.shortToast
@@ -52,14 +55,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.refresh()
     }
 
-    private fun setupListeners(){
+    private fun setupListeners() {
 
         initRefreshListener()
         initFilterListeners()
     }
 
     private fun initFilterListeners() {
-        val filterBottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetFilter.filterBottomSheet)
+        val filterBottomSheetBehavior =
+            BottomSheetBehavior.from(binding.bottomSheetFilter.filterBottomSheet)
         binding.filterBtn.setOnClickListener {
             filterBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
@@ -68,7 +72,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun initRefreshListener(){
+    private fun initRefreshListener() {
         binding.refreshLayout.setOnRefreshListener {
             lifecycleScope.launch {
                 shortToast("REFRESHING")
@@ -90,7 +94,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun createProductsAdapter(): ProductsAdapter {
-        val productsAdapter = ProductsAdapter { productId -> shortToast("Product id = $productId") }
+        val productsAdapter = ProductsAdapter { productId ->
+            shortToast("Product id = $productId")
+            openDetails(productId)
+        }
 
         binding.productsRecycler.adapter = productsAdapter
         binding.productsRecycler.layoutManager =
@@ -119,6 +126,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+    }
+
+    private fun openDetails(id: Int) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(id)
+        findNavController().navigate(action)
     }
 
     // todo improve method
@@ -153,6 +165,4 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
-
-
 }

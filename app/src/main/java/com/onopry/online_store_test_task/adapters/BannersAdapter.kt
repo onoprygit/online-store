@@ -1,4 +1,4 @@
-package com.onopry.online_store_test_task.screens.adapters
+package com.onopry.online_store_test_task.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
