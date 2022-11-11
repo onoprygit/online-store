@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Onlinestoretesttask" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!--<style name="Theme.Onlinestoretesttask" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <style name="Theme.Onlinestoretesttask" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +13,28 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/mark_pro</item>
+        <item name="android:textColor">@color/font_main</item>
+    </style>
+
+    <style name="Button.White" parent="Theme.Onlinestoretesttask">
+        <item name="colorAccent">@color/white</item>
+        <item name="cornerRadius">5dp</item>
+        <item name="paddingStart">0dp</item>
+    </style>
+
+
+    <style name="HomeTitleTextView">
+        <item name="android:textSize">@dimen/title_2</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/font_main</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">17dp</item>
+    </style>
+
+    <style name="MoreWithTitleTextButton">
+        <item name="android:textSize">@dimen/content_4</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/accent</item>
     </style>
 </resources>

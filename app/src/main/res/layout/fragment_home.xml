@@ -1,13 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screens.home.HomeFragment"
+    android:background="@color/background"
+    >
 
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-</FrameLayout>
+                <ImageView
+                    android:id="@+id/locationImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location"
+                    android:layout_marginStart="132dp"
+                    app:layout_constraintTop_toTopOf="@id/locationText"
+                    app:layout_constraintBottom_toBottomOf="@id/locationText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zihuatanejo, Gro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="12dp"
+                    android:textSize="@dimen/content_4"
+                    android:textFontWeight="500"
+                    android:textColor="@color/font_main"
+                    />
+
+                <ImageView
+                    android:id="@+id/filterBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/locationText"
+                    app:layout_constraintBottom_toBottomOf="@id/locationText"
+                    android:src="@drawable/ic_filter"
+                    android:layout_marginEnd="35dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/expandLocationBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/locationText"
+                    app:layout_constraintBottom_toBottomOf="@id/locationText"
+                    app:layout_constraintStart_toEndOf="@id/locationText"
+                    android:src="@drawable/ic_expand_arrow_small"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/categoryTitleText"
+                    style="@style/HomeTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categories_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/locationText"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/viewAllTextBtn"
+                    style="@style/MoreWithTitleTextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/categoryTitleText"
+                    app:layout_constraintBottom_toBottomOf="@id/categoryTitleText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="33dp"
+                    android:text="@string/categories_more"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoriesRecycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/categoryTitleText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_category"
+                    />
+
+                <!--todo: add shadow-->
+                <EditText
+                    android:id="@+id/searchField"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    app:layout_constraintTop_toBottomOf="@id/categoriesRecycler"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/searchQrBtn"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="11dp"
+                    android:background="@drawable/bg_search_field"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/search_hint_text"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="16dp"
+                    android:paddingStart="24dp"
+                    />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/searchQrBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/searchField"
+                    app:layout_constraintBottom_toBottomOf="@id/searchField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="37dp"
+                    android:src="@drawable/ic_search_qr"
+                    app:contentPadding="10dp"
+                    android:background="@color/accent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                    />
+
+                <TextView
+                    android:id="@+id/salesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/searchField"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="@style/HomeTitleTextView"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/sales_title"
+                    />
+
+                <TextView
+                    android:id="@+id/moreSalesBtn"
+                    style="@style/MoreWithTitleTextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/salesTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/salesTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="33dp"
+                    android:text="@string/sales_more"
+                    />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/bannersPager"
+                    android:layout_width="0dp"
+                    android:layout_height="182dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/salesTitle"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="21dp"
+                    />
+
+                <include
+                    android:id="@+id/bannerLoadStateView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    layout="@layout/load_state_part"
+                    app:layout_constraintStart_toStartOf="@+id/bannersPager"
+                    app:layout_constraintEnd_toEndOf="@+id/bannersPager"
+                    app:layout_constraintTop_toTopOf="@+id/bannersPager"
+                    app:layout_constraintBottom_toBottomOf="@+id/bannersPager"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    />
+
+                <!--            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/bannerRecycler"
+                                android:layout_width="0dp"
+                                android:layout_height="182dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginEnd="21dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/salesTitle"
+                                android:orientation="horizontal"
+                                tools:listitem="@layout/item_banner"
+                                android:visibility="gone"
+                                />-->
+
+
+                <!--<com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/salesContentPoster"
+                    android:layout_width="0dp"
+                    android:layout_height="182dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="21dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/salesTitle"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sales_asset_background_image"
+                    app:shapeAppearanceOverlay="@style/roundedSaleImageView"
+                    />-->
+
+                <TextView
+                    android:id="@+id/bestSellerTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/bannersPager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="@style/HomeTitleTextView"
+                    android:text="@string/best_seller"
+                    android:layout_marginTop="11dp"
+                    />
+
+                <TextView
+                    android:id="@+id/moreBestSellerBtn"
+                    style="@style/MoreWithTitleTextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/bestSellerTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/bestSellerTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="33dp"
+                    android:text="@string/sales_more"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productsRecycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/bestSellerTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="21dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_product"
+                    />
+
+                <include
+                    android:id="@+id/productsLoadStateView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    layout="@layout/load_state_part"
+                    app:layout_constraintStart_toStartOf="@+id/productsRecycler"
+                    app:layout_constraintEnd_toEndOf="@+id/productsRecycler"
+                    app:layout_constraintTop_toTopOf="@+id/productsRecycler"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <include
+        android:id="@+id/bottomSheetFilter"
+        layout="@layout/bottom_sheet_filter"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

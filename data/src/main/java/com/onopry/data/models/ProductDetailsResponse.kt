@@ -1,8 +1,10 @@
 package com.onopry.data.models
 
-import com.onopry.domain.models.details.ItemDetails
+import com.onopry.domain.models.details.ProductDetails
+import com.squareup.moshi.JsonClass
 
-data class DetailsResponse(
+@JsonClass(generateAdapter = true)
+data class ProductDetailsResponse(
     val CPU: String,
     val camera: String,
     val capacity: List<String>,
@@ -16,7 +18,7 @@ data class DetailsResponse(
     val ssd: String,
     val title: String
 ) {
-    fun toDomain() = ItemDetails(
+    fun toDomain() = ProductDetails(
         CPU = CPU,
         camera = camera,
         capacity = capacity,
@@ -24,7 +26,7 @@ data class DetailsResponse(
         id = id,
         images = images,
         isFavorites = isFavorites,
-        price = price,
+        price = price.toString(),
         rating = rating,
         sd = sd,
         ssd = ssd,

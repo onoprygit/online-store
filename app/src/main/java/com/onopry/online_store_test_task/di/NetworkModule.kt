@@ -1,6 +1,6 @@
 package com.onopry.online_store_test_task.di
 
-import com.onopry.data.datasource.remote.NetworkApi
+import com.onopry.data.datasource.remote.StoreApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -34,15 +35,12 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(moshi: Moshi, client: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://run.mocky.io/v3")
+        .baseUrl("https://run.mocky.io/v3/")
         .client(client)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
     @Provides
     @Singleton
-    fun provideApi(retrofit: Retrofit): NetworkApi = retrofit.create(NetworkApi::class.java)
-
-
-
+    fun provideApi(retrofit: Retrofit): StoreApi = retrofit.create(StoreApi::class.java)
 }

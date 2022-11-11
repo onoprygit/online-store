@@ -9,7 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_color">#010035</color>
-    <color name="accent_color">#FF6E4E</color>
+    <color name="accent">#FF6E4E</color>
+    <color name="background">#F8F8F8</color>
+    <color name="font_gray">#CCCCCC</color>
 
     <color name="font_black">#000000</color>
+    <color name="font_main">#010035</color>
 </resources>
