@@ -17,6 +17,7 @@
         <item name="android:textColor">@color/font_main</item>
     </style>
 
+
     <style name="Button.White" parent="Theme.Onlinestoretesttask">
         <item name="colorAccent">@color/white</item>
         <item name="cornerRadius">5dp</item>

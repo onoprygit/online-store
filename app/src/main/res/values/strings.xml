@@ -32,7 +32,7 @@
     <string name="details_tab_content_shop">Shop</string>
     <string name="details_tab_content_details">Details</string>
     <string name="details_tab_content_features">Features</string>
-    <string name="choose_color_title">Select color and capacity</string>
+    <string name="choose_product_specs_title">Select color and capacity</string>
     <string name="add_to_cart">Add to Cart</string>
 
     <!--CART-->
@@ -45,4 +45,10 @@
     <string name="try_again_button">Try Again?</string>
     <string name="load_state_error_text">Oops... unexpected load error.</string>
     <string name="filter_accept_button">Done</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_menu_home_screen_title">Explorer</string>
+    <string name="bottom_menu_cart_screen_title">Cart</string>
+    <string name="bottom_menu_favorites_screen_title">Favorites</string>
+    <string name="bottom_menu_profile_screen_title">Profile</string>
 </resources>

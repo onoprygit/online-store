@@ -12,8 +12,8 @@
 
         <ImageButton
             android:id="@+id/closeButton"
-            android:layout_width="@dimen/close_btn_width_height"
-            android:layout_height="@dimen/close_btn_width_height"
+            android:layout_width="@dimen/sqare_action_button_width_height"
+            android:layout_height="@dimen/sqare_action_button_width_height"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="42dp"
@@ -24,14 +24,14 @@
 
         <ImageButton
             android:id="@+id/actionButton"
-            android:layout_width="@dimen/close_btn_width_height"
-            android:layout_height="@dimen/close_btn_width_height"
+            android:layout_width="@dimen/sqare_action_button_width_height"
+            android:layout_height="@dimen/sqare_action_button_width_height"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="42dp"
             android:background="@drawable/bg_rectangle_rounded_button_big"
             android:backgroundTint="@color/accent"
-            tools:src="@drawable/ic_toolbar_cart"
+            android:src="@drawable/ic_toolbar_cart"
             android:padding="30dp"
             />
 

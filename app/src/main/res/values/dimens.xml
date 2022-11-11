@@ -27,7 +27,12 @@
     <dimen name="banner_action_button_width">98dp</dimen>
     <dimen name="banner_action_button_height">23dp</dimen>
 
-    <dimen name="close_btn_width_height">37dp</dimen>
+    <dimen name="sqare_action_button_width_height">37dp</dimen>
+    <dimen name="basic_elevation">20dp</dimen>
+
+    <!--spec-->
+    <dimen name="spec_image_height">28dp</dimen>
+    <dimen name="spec_text_margin_top">5dp</dimen>
 
 
 </resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/productSpec"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/imageCPU"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spec_image_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageCamera"
+        android:src="@drawable/ic_spec_cpu" />
+
+    <TextView
+        android:id="@+id/contentTextCPU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageCPU"
+        app:layout_constraintStart_toStartOf="@id/imageCPU"
+        app:layout_constraintEnd_toEndOf="@id/imageCPU"
+        android:layout_marginTop="@dimen/spec_text_margin_top"
+        tools:text="Exynos 990"
+        android:textColor="#B7B7B7"
+        />
+
+    <ImageView
+        android:id="@+id/imageCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spec_image_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageCPU"
+        app:layout_constraintEnd_toStartOf="@id/imageRam"
+        android:src="@drawable/ic_spec_camera" />
+
+    <TextView
+        android:id="@+id/contentTextCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageCamera"
+        app:layout_constraintStart_toStartOf="@id/imageCamera"
+        app:layout_constraintEnd_toEndOf="@id/imageCamera"
+        android:layout_marginTop="@dimen/spec_text_margin_top"
+        tools:text="108 + 12 mp"
+        android:textColor="#B7B7B7"
+        />
+
+    <ImageView
+        android:id="@+id/imageRam"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spec_image_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageCamera"
+        app:layout_constraintEnd_toStartOf="@id/imageSd"
+        android:src="@drawable/ic_spec_ram" />
+
+    <TextView
+        android:id="@+id/contentTextRam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageRam"
+        app:layout_constraintStart_toStartOf="@id/imageRam"
+        app:layout_constraintEnd_toEndOf="@id/imageRam"
+        android:layout_marginTop="@dimen/spec_text_margin_top"
+        tools:text="8 GB"
+        android:textColor="#B7B7B7"
+        />
+
+    <ImageView
+        android:id="@+id/imageSd"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spec_image_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageRam"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_spec_sdram" />
+
+    <TextView
+        android:id="@+id/contentTextSd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageSd"
+        app:layout_constraintStart_toStartOf="@id/imageSd"
+        app:layout_constraintEnd_toEndOf="@id/imageSd"
+        android:layout_marginTop="@dimen/spec_text_margin_top"
+        tools:text="256 GB"
+        android:textColor="#B7B7B7"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

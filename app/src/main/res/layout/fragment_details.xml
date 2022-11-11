@@ -1,13 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.details.DetailsFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-</FrameLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/productImages"
+        android:layout_width="266dp"
+        android:layout_height="235dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="20dp"
+        />
+
+    <!--todo do it with bottomsheet and because details tab can require full expand of view -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailsConent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/productImages"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bg_details_content"
+        android:elevation="@dimen/basic_elevation"
+        android:layout_marginTop="14dp">
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="38dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/title_3"
+            tools:text="Galaxy Note 20 Ultra"
+            />
+
+        <ImageButton
+            android:id="@+id/likeButton"
+            android:layout_width="@dimen/sqare_action_button_width_height"
+            android:layout_height="@dimen/sqare_action_button_width_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="37dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_rectangle_rounded_button_big"
+            android:backgroundTint="@color/main_color"
+            android:src="@drawable/ic_bottom_favorites"
+            />
+
+        <include
+            android:id="@+id/rating"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            layout="@layout/rating_part"
+            app:layout_constraintStart_toStartOf="@id/productName"
+            app:layout_constraintTop_toBottomOf="@id/productName"
+            android:layout_marginTop="7dp"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/specTabLayout"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            android:layout_marginStart="27dp"
+            android:layout_marginEnd="27dp"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/font_gray"
+            app:tabIndicatorColor="@color/accent"
+            >
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_tab_content_shop"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_tab_content_details"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabFeatures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_tab_content_features"
+                />
+
+        </com.google.android.material.tabs.TabLayout>
+
+<!--        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/specsPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/specTabLayout"
+            app:layout_constraintStart_toStartOf="@id/specTabLayout"
+            app:layout_constraintEnd_toEndOf="@id/specTabLayout"
+            app:layout_constraintBottom_toTopOf="@id/selectProductsSpecsTitle"
+            />-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/productSpec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/specTabLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/selectProductsSpecsTitle"
+            >
+            <ImageView
+                android:id="@+id/imageCPU"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spec_image_height"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageCamera"
+                android:src="@drawable/ic_spec_cpu" />
+
+            <TextView
+                android:id="@+id/contentTextCPU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageCPU"
+                app:layout_constraintStart_toStartOf="@id/imageCPU"
+                app:layout_constraintEnd_toEndOf="@id/imageCPU"
+                android:layout_marginTop="@dimen/spec_text_margin_top"
+                tools:text="Exynos 990"
+                android:textColor="#B7B7B7"
+                />
+
+            <ImageView
+                android:id="@+id/imageCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spec_image_height"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageCPU"
+                app:layout_constraintEnd_toStartOf="@id/imageRam"
+                android:src="@drawable/ic_spec_camera" />
+
+            <TextView
+                android:id="@+id/contentTextCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageCamera"
+                app:layout_constraintStart_toStartOf="@id/imageCamera"
+                app:layout_constraintEnd_toEndOf="@id/imageCamera"
+                android:layout_marginTop="@dimen/spec_text_margin_top"
+                tools:text="108 + 12 mp"
+                android:textColor="#B7B7B7"
+                />
+
+            <ImageView
+                android:id="@+id/imageRam"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spec_image_height"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageCamera"
+                app:layout_constraintEnd_toStartOf="@id/imageSd"
+                android:src="@drawable/ic_spec_ram" />
+
+            <TextView
+                android:id="@+id/contentTextRam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageRam"
+                app:layout_constraintStart_toStartOf="@id/imageRam"
+                app:layout_constraintEnd_toEndOf="@id/imageRam"
+                android:layout_marginTop="@dimen/spec_text_margin_top"
+                tools:text="8 GB"
+                android:textColor="#B7B7B7"
+                />
+
+            <ImageView
+                android:id="@+id/imageSd"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spec_image_height"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageRam"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_spec_sdram" />
+
+            <TextView
+                android:id="@+id/contentTextSd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageSd"
+                app:layout_constraintStart_toStartOf="@id/imageSd"
+                app:layout_constraintEnd_toEndOf="@id/imageSd"
+                android:layout_marginTop="@dimen/spec_text_margin_top"
+                tools:text="256 GB"
+                android:textColor="#B7B7B7"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--<include
+            layout="@layout/item_product_spec"
+            app:layout_constraintTop_toBottomOf="@id/specTabLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/selectProductsSpecsTitle"
+            />-->
+
+        <TextView
+            android:id="@+id/selectProductsSpecsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/buyActionButton"
+            app:layout_constraintBottom_toTopOf="@id/buyActionButton"
+            android:layout_marginBottom="81dp"
+            android:text="@string/choose_product_specs_title"
+            android:textSize="@dimen/title_6"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/buyActionButton"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/bg_rectangle_rounded_button_big"
+            android:backgroundTint="@color/accent"
+            android:text="@string/add_to_cart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/content_1"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
