@@ -32,6 +32,7 @@ class ProductsAdapter(
     fun setProductsList(list: List<Product>) {
         products.clear()
         products.addAll(list)
+        // TODO: improve list item changes
         notifyDataSetChanged()
     }
 
@@ -40,6 +41,8 @@ class ProductsAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             with(binding) {
+                root.setOnClickListener { clickListener(product.id) }
+
                 productName.text = product.title
                 productPrice.text = product.discountPrice
                 productEarlyPrice.text = product.priceWithoutDiscount
@@ -51,7 +54,10 @@ class ProductsAdapter(
                 else
                     likeOnProductIcon.setImageResource(R.drawable.ic_like_empty)
 
-                Glide.with(this.root).load(product.picture).into(productImage)
+                Glide.with(this.root)
+                    .load(product.picture)
+                    .placeholder(R.drawable.placeholder_image)
+                    .into(productImage)
             }
         }
     }

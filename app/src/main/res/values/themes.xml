@@ -14,6 +14,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/mark_pro</item>
+        <item name="android:textColor">@color/font_main</item>
     </style>
 
     <style name="Button.White" parent="Theme.Onlinestoretesttask">

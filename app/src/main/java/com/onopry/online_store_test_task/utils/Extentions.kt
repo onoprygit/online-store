@@ -21,3 +21,7 @@ fun View.gone() = this.apply { if (visibility != View.GONE) visibility = View.GO
 inline fun View.showIfConditionOrHide(condition: () -> Boolean) = this.apply {
     visibility = if (condition() && visibility != View.VISIBLE) View.VISIBLE else View.INVISIBLE
 }
+
+inline fun View.showIfConditionOrGone(condition: () -> Boolean) = this.apply {
+    visibility = if (condition() && visibility != View.VISIBLE) View.VISIBLE else View.GONE
+}

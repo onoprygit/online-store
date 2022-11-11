@@ -32,6 +32,7 @@ class BannersAdapter(private val onBannerClickListener: onBannerClickListener) :
     fun setBannerList(list: List<ProductBanner>){
         banners.clear()
         banners.addAll(list)
+        // TODO: improve list item changes
         notifyDataSetChanged()
     }
 
@@ -39,6 +40,8 @@ class BannersAdapter(private val onBannerClickListener: onBannerClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(banner: ProductBanner) {
             with(binding) {
+                root.setOnClickListener{ onBannerClickListener(banner.id) }
+
                 bannerFlagNew.showIfConditionOrHide { banner.isNew }
                 title.text = banner.title
                 subtitle.text = banner.subtitle

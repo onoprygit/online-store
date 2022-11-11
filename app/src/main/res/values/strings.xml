@@ -42,4 +42,7 @@
     <!--<string name="search_hint_text"><font size="12sp">Search</font></string>-->
     <string name="search_hint_text">Search</string>
     <string name="banner_new_flag_text">New</string>
+    <string name="try_again_button">Try Again?</string>
+    <string name="load_state_error_text">Oops... unexpected load error.</string>
+    <string name="filter_accept_button">Done</string>
 </resources>

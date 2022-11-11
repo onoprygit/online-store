@@ -50,5 +50,10 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun refresh(){
+        _uiState.value = HomeUiState(isLoading = true)
+        fetchHome()
+    }
+
     fun getCategories() = getCategoriesUseCase()
 }

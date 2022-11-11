@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filterBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:elevation="20dp"
+    android:paddingBottom="44dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_peekHeight="0dp"
+    app:behavior_hideable="true">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/buttonsTopGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/contentStartGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="46dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/contentEndGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="31dp" />
+
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="44dp"
+        android:background="@drawable/bg_rectangle_rounded_button_big"
+        android:backgroundTint="@color/main_color"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/buttonsTopGuideline" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="86dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_rectangle_rounded_button_big"
+        android:backgroundTint="@color/accent"
+        android:text="@string/filter_accept_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/buttonsTopGuideline" />
+
+    <TextView
+        android:id="@+id/filterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="-0.02"
+        android:text="@string/filter_title"
+        android:textSize="@dimen/title_5"
+        app:layout_constraintBottom_toBottomOf="@id/closeButton"
+        app:layout_constraintEnd_toStartOf="@id/doneButton"
+        app:layout_constraintStart_toEndOf="@id/closeButton"
+        app:layout_constraintTop_toTopOf="@id/closeButton" />
+
+    <TextView
+        android:id="@+id/brandFilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/filter_brand_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/brandExpandableList"
+        app:layout_constraintStart_toStartOf="@id/brandExpandableList" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/brandExpandableList"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/bg_filter_selection_field"
+        android:gravity="start|center_vertical"
+        android:paddingHorizontal="14dp"
+        app:drawableRightCompat="@drawable/ic_expand_arrow_big"
+        app:layout_constraintEnd_toEndOf="@id/contentEndGuideline"
+        app:layout_constraintStart_toStartOf="@id/contentStartGuideline"
+        app:layout_constraintTop_toBottomOf="@id/closeButton"
+        tools:text="Samsung" />
+
+    <TextView
+        android:id="@+id/priceFilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/filter_price_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/priceExpandableList"
+        app:layout_constraintStart_toStartOf="@id/priceExpandableList" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/priceExpandableList"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/bg_filter_selection_field"
+        android:gravity="start|center_vertical"
+        android:paddingHorizontal="14dp"
+        app:drawableRightCompat="@drawable/ic_expand_arrow_big"
+        app:layout_constraintEnd_toEndOf="@id/contentEndGuideline"
+        app:layout_constraintStart_toStartOf="@id/contentStartGuideline"
+        app:layout_constraintTop_toBottomOf="@id/brandExpandableList"
+        tools:text="4.5 to 5.5 inches" />
+
+    <TextView
+        android:id="@+id/sizeFilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/filter_size_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/sizeExpandableList"
+        app:layout_constraintStart_toStartOf="@id/sizeExpandableList" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sizeExpandableList"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/bg_filter_selection_field"
+        android:gravity="start|center_vertical"
+        android:paddingHorizontal="14dp"
+        app:drawableRightCompat="@drawable/ic_expand_arrow_big"
+        app:layout_constraintEnd_toEndOf="@id/contentEndGuideline"
+        app:layout_constraintStart_toStartOf="@id/contentStartGuideline"
+        app:layout_constraintTop_toBottomOf="@id/priceExpandableList"
+        tools:text="Samsung" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -2,18 +2,25 @@ package com.onopry.online_store_test_task.screens.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.onopry.domain.models.home.ProductCategory
 import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.databinding.ItemCategoryBinding
 
-typealias OnCategorySelectListener = (id: Int) -> Unit
+typealias OnCategorySelectListener = (categoryId: Int) -> Unit
 
 class CategoryAdapter(
-    private val selectListener: OnCategorySelectListener
+    private val categorySelectListener: OnCategorySelectListener
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private val categoriesList = mutableListOf<ProductCategory>()
+
+    //    private var selectedCategoryId = SelectedCategoryId(current = -1, previous = -1)
+    var selectedCategoryPos = 0
+        private set
+    var prevSelectedCategoryPos = -1
+        private set
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
@@ -26,30 +33,59 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.bind(categoriesList[position])
+        val category = categoriesList[position]
+        holder.bind(category, position)
+        holder.binding.categoryIcon.setOnClickListener {
+            selectedCategoryPos =
+                position.also { prevSelectedCategoryPos = selectedCategoryPos }
+            categorySelectListener(category.id)
+            notifyItemChanged(selectedCategoryPos)
+            notifyItemChanged(prevSelectedCategoryPos)
+        }
     }
 
     override fun getItemCount() = categoriesList.size
 
-    fun setCategoriesList(list: List<ProductCategory>){
+    fun setCategoriesList(list: List<ProductCategory>) {
         categoriesList.clear()
         categoriesList.addAll(list)
     }
 
-    class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+    inner class CategoryViewHolder(val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(category: ProductCategory) {
+        fun bind(category: ProductCategory, pos: Int) {
+
             with(binding) {
-                //                categoryIcon.setImageResource()
-                when (category.id) {
-                    1001L -> categoryIcon.setImageResource(R.drawable.ic_category_phones)
-                    1002L -> categoryIcon.setImageResource(R.drawable.ic_category_computers)
-                    1003L -> categoryIcon.setImageResource(R.drawable.ic_category_health)
-                    1004L -> categoryIcon.setImageResource(R.drawable.ic_category_books)
-                    1005L -> categoryIcon.setImageResource(R.drawable.ic_category_computers)
+                if (selectedCategoryPos == pos) {
+                    setSelectedCategoryUiState(categoryIcon, category.id)
+                } else {
+                    setUnselectedCategoryUiState(categoryIcon, category.id)
                 }
+
                 categoryName.text = category.name
             }
+        }
+    }
+
+    fun setUnselectedCategoryUiState(categoryIcon: ImageView, categoryId: Int) {
+        categoryIcon.setBackgroundResource(R.drawable.bg_category_unselected)
+        when (categoryId) {
+            10001 -> categoryIcon.setImageResource(R.drawable.ic_category_phones_unselected)
+            10002 -> categoryIcon.setImageResource(R.drawable.ic_category_computers_unselected)
+            10003 -> categoryIcon.setImageResource(R.drawable.ic_category_health_unselected)
+            10004 -> categoryIcon.setImageResource(R.drawable.ic_category_books_unselected)
+            10005 -> categoryIcon.setImageResource(R.drawable.ic_category_computers_unselected)
+        }
+    }
+
+    fun setSelectedCategoryUiState(categoryIcon: ImageView, categoryId: Int) {
+        categoryIcon.setBackgroundResource(R.drawable.bg_category_selected)
+        when (categoryId) {
+            10001 -> categoryIcon.setImageResource(R.drawable.ic_category_phones_selected)
+            10002 -> categoryIcon.setImageResource(R.drawable.ic_category_computers_selected)
+            10003 -> categoryIcon.setImageResource(R.drawable.ic_category_health_selected)
+            10004 -> categoryIcon.setImageResource(R.drawable.ic_category_books_selected)
+            10005 -> categoryIcon.setImageResource(R.drawable.ic_category_computers_selected)
         }
     }
 }
