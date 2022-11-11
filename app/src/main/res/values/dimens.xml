@@ -27,5 +27,7 @@
     <dimen name="banner_action_button_width">98dp</dimen>
     <dimen name="banner_action_button_height">23dp</dimen>
 
+    <dimen name="close_btn_width_height">37dp</dimen>
+
 
 </resources>
