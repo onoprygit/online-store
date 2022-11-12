@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment"/>
+        <action
+            android:id="@+id/action_homeFragment_to_filterBottomSheet2"
+            app:destination="@id/filterBottomSheet2" />
 
     </fragment>
     <fragment
@@ -43,4 +46,8 @@
             app:nullable="false"
             />
     </fragment>
+    <dialog
+        android:id="@+id/filterBottomSheet2"
+        android:name="com.onopry.online_store_test_task.presentation.home.FilterBottomSheet"
+        android:label="FilterBottomSheet" />
 </navigation>

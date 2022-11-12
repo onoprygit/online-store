@@ -1,5 +1,6 @@
 package com.onopry.domain.repository
 
+import com.onopry.domain.models.cart.Cart
 import com.onopry.domain.models.details.ProductDetails
 import com.onopry.domain.models.home.BannerAndProduct
 import com.onopry.domain.models.home.ProductCategory
@@ -9,4 +10,5 @@ interface StoreRepository {
     suspend fun getBannersAndProducts(): ApiResult<BannerAndProduct>
     suspend fun getProductDetails(): ApiResult<ProductDetails>
     fun getProductCategories(): List<ProductCategory>
+    suspend fun getUserCart(): ApiResult<Cart>
 }

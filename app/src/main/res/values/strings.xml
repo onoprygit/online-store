@@ -51,4 +51,5 @@
     <string name="bottom_menu_cart_screen_title">Cart</string>
     <string name="bottom_menu_favorites_screen_title">Favorites</string>
     <string name="bottom_menu_profile_screen_title">Profile</string>
+    <string name="cart_toolbar_text">Add address</string>
 </resources>
