@@ -7,6 +7,6 @@ import com.onopry.domain.utils.ApiResult
 
 interface StoreRepository {
     suspend fun getBannersAndProducts(): ApiResult<BannerAndProduct>
-    suspend fun getProductDetails(productId: Int): ApiResult<ProductDetails>
+    suspend fun getProductDetails(): ApiResult<ProductDetails>
     fun getProductCategories(): List<ProductCategory>
 }

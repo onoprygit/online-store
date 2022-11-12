@@ -34,5 +34,8 @@
     <dimen name="spec_image_height">28dp</dimen>
     <dimen name="spec_text_margin_top">5dp</dimen>
 
+    <dimen name="viewpager_next_item_visible">36dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">74dp</dimen>
+
 
 </resources>

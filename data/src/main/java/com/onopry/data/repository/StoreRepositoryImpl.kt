@@ -27,8 +27,8 @@ class StoreRepositoryImpl(
             is ApiException -> ApiException<BannerAndProduct>(exception = response.exception)
         }
 
-    override suspend fun getProductDetails(productId: Int): ApiResult<ProductDetails> =
-        when (val response = remoteDataSource.getProductDetails(productId)){
+    override suspend fun getProductDetails(): ApiResult<ProductDetails> =
+        when (val response = remoteDataSource.getProductDetails()){
             is ApiSuccess -> ApiSuccess<ProductDetails>(data = response.data.toDomain())
             is ApiError -> ApiError<ProductDetails>(
                 code = response.code,
