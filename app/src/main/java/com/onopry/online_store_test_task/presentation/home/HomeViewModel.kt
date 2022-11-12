@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(
         fetchData()
     }
 
-    override fun refreshData(){
+    override fun refreshData() {
         _uiState.value = HomeUiState(isLoading = true)
         fetchData()
     }

@@ -11,13 +11,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment">
-            <argument
-                android:name="productId"
-                app:argType="integer"
-                app:nullable="false"
-                />
-        </action>
+            app:destination="@id/detailsFragment"/>
 
     </fragment>
     <fragment
@@ -42,7 +36,11 @@
         tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_detailsFragment_to_cartFragment"
-            app:destination="@id/cartFragment">
-        </action>
+            app:destination="@id/cartFragment"/>
+        <argument
+            android:name="productId"
+            app:argType="integer"
+            app:nullable="false"
+            />
     </fragment>
 </navigation>

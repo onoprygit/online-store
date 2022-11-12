@@ -6,6 +6,6 @@ import com.onopry.data.models.ProductDetailsResponse
 
 interface RemoteDataSource {
     suspend fun getBannersAndProducts(): ApiResult<HomeResponse>
-    suspend fun getProductDetails(productId: Int): ApiResult<ProductDetailsResponse>
+    suspend fun getProductDetails(): ApiResult<ProductDetailsResponse>
 }
 
