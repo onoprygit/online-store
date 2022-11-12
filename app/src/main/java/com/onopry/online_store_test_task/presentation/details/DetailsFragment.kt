@@ -1,14 +1,15 @@
 package com.onopry.online_store_test_task.presentation.details
 
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.onopry.data.utils.debugLog
@@ -16,8 +17,13 @@ import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.adapters.DetailsImageAdapter
 import com.onopry.online_store_test_task.adapters.DetailsImageItemDecorator
 import com.onopry.online_store_test_task.databinding.FragmentDetailsBinding
+import com.onopry.online_store_test_task.presentation.main.SharedCartViewModel
+import com.onopry.online_store_test_task.utils.gone
 import com.onopry.online_store_test_task.utils.shortToast
+import com.onopry.online_store_test_task.utils.show
+import com.onopry.online_store_test_task.utils.showIfConditionOrGone
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
@@ -25,6 +31,7 @@ import kotlin.math.abs
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private val viewModel: DetailsViewModel by viewModels()
+    private val cartSharedCartViewModel: SharedCartViewModel by activityViewModels()
     private lateinit var binding: FragmentDetailsBinding
 
     private val args: DetailsFragmentArgs by navArgs()
@@ -34,6 +41,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         binding = FragmentDetailsBinding.bind(view)
 
         binding.toolbar.toobarTitle.text = resources.getString(R.string.details_title)
+
+        binding.toolbar.closeButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.toolbar.actionButton.setOnClickListener {
+            findNavController().navigate(
+                DetailsFragmentDirections.actionDetailsFragmentToCartFragment()
+            )
+        }
 
         val imagesAdapter = DetailsImageAdapter()
         setupCarousel(imagesAdapter)
@@ -75,6 +92,20 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         imagesAdapter.setImageUrls(state.data?.images ?: emptyList())
                         buyActionButton.text = "${buyActionButton.text} + ${state.data?.price}"
                     }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                cartSharedCartViewModel.cartItemsCount.collect { cartItemsCount ->
+                    with(binding.toolbar.notificationBadge) {
+                        if (cartItemsCount > 0) {
+                            text = cartItemsCount.toString()
+                            this.show()
+                        } else this.gone()
+                    }
+
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.onopry.online_store_test_task.di
 
 import com.onopry.domain.repository.StoreRepository
 import com.onopry.domain.usecases.GetBannersAndProductsUseCase
+import com.onopry.domain.usecases.GetCartUseCase
 import com.onopry.domain.usecases.GetProductCategoriesUseCase
 import com.onopry.domain.usecases.GetProductDetailsUseCase
 import dagger.Module
@@ -23,4 +24,8 @@ object UseCaseModule {
     @Provides
     fun getProductDetailsUseCase(repository: StoreRepository) =
         GetProductDetailsUseCase(repository = repository)
+
+    @Provides
+    fun getCartUseCase(repository: StoreRepository) =
+        GetCartUseCase(repository = repository)
 }
