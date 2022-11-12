@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.detailsFragment -> binding.bottomNavBar.gone()
                 R.id.cartFragment -> binding.bottomNavBar.gone()
+//                R.id.filterBottomSheet
                 else -> binding.bottomNavBar.show()
             }
         }

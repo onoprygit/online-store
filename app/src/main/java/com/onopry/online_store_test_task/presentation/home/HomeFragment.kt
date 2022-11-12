@@ -15,6 +15,7 @@ import com.onopry.domain.models.home.BannerAndProduct
 import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.adapters.BannersAdapter
 import com.onopry.online_store_test_task.adapters.CategoryAdapter
+import com.onopry.online_store_test_task.adapters.OffsetItemDecorator
 import com.onopry.online_store_test_task.adapters.ProductsAdapter
 import com.onopry.online_store_test_task.databinding.FragmentHomeBinding
 import com.onopry.online_store_test_task.presentation.base.BaseUiState
@@ -64,8 +65,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun initFilterListeners() {
         val filterBottomSheetBehavior =
             BottomSheetBehavior.from(binding.bottomSheetFilter.filterBottomSheet)
+
         binding.filterBtn.setOnClickListener {
-            filterBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+//            filterBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToFilterBottomSheet2()
+            )
         }
         binding.bottomSheetFilter.closeButton.setOnClickListener {
             filterBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -98,8 +103,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             shortToast("Product id = $productId")
             openDetails(productId)
         }
+        val decorator = OffsetItemDecorator(
+            verticalOffset = 12,
+            horizontalOffset = 14
+        )
 
         binding.productsRecycler.adapter = productsAdapter
+        binding.productsRecycler.addItemDecoration(decorator)
         binding.productsRecycler.layoutManager =
             GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         return productsAdapter

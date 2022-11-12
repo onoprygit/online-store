@@ -7,8 +7,11 @@ import com.bumptech.glide.Glide
 import com.onopry.domain.models.cart.CartItem
 import com.onopry.online_store_test_task.R
 import com.onopry.online_store_test_task.databinding.CartItemBinding
+import com.onopry.online_store_test_task.utils.BaseMoneyConverter
 
-class CartItemAdapter : RecyclerView.Adapter<CartItemAdapter.CartItemHolder>() {
+class CartItemAdapter(
+    private val moneyConverter: BaseMoneyConverter
+) : RecyclerView.Adapter<CartItemAdapter.CartItemHolder>() {
 
     private val items = mutableListOf<CartItem>()
 
@@ -30,12 +33,12 @@ class CartItemAdapter : RecyclerView.Adapter<CartItemAdapter.CartItemHolder>() {
         holder.itemView.tag
         with(holder.binding) {
             productName.text = item.title
-            val itemPrice = item.price * countItems.text.toString().toInt()
-            productPrice.text = "$$itemPrice us"
+            productPrice.text = moneyConverter.print(item.price)
 
             Glide.with(holder.binding.root.context)
                 .load(productImage)
                 .placeholder(R.drawable.placeholder_image)
+                .into(productImage)
         }
     }
 
